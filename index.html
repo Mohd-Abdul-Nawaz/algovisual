@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AlgoVisual — Sorting & Pathfinding Visualizer</title>
+<meta name="description" content="Interactive sorting and Dijkstra pathfinding visualizer by Mohd Abdul Nawaz. Zero dependencies, deploys as a static site." />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">◈ AlgoVisual</div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="sorting" role="tab">Sorting</button>
+    <button class="tab" data-tab="pathfinding" role="tab">Pathfinding</button>
+  </nav>
+  <a class="gh" href="https://github.com/Mohd-Abdul-Nawaz" target="_blank" rel="noopener">GitHub ↗</a>
+</header>
+
+<main>
+  <!-- ============ SORTING PANEL ============ -->
+  <section id="panel-sorting" class="panel active">
+    <div class="controls">
+      <label>Algorithm
+        <select id="sort-algo">
+          <option value="bubble">Bubble Sort — O(n²)</option>
+          <option value="insertion">Insertion Sort — O(n²)</option>
+          <option value="quick">Quick Sort — O(n log n) avg</option>
+          <option value="merge">Merge Sort — O(n log n)</option>
+        </select>
+      </label>
+      <label>Size <input id="sort-size" type="range" min="8" max="120" value="48" /> <span id="sort-size-val">48</span></label>
+      <label>Speed <input id="sort-speed" type="range" min="1" max="100" value="60" /></label>
+      <div class="btnrow">
+        <button id="sort-shuffle" class="btn ghost">Shuffle</button>
+        <button id="sort-run" class="btn primary">▶ Sort</button>
+        <button id="sort-reset" class="btn ghost">Reset</button>
+      </div>
+    </div>
+    <div class="stats" id="sort-stats">
+      <span>comparisons: <b id="sort-comps">0</b></span>
+      <span>swaps/writes: <b id="sort-swaps">0</b></span>
+      <span>status: <b id="sort-status">idle</b></span>
+    </div>
+    <div class="canvas-wrap"><div id="bars" class="bars" aria-label="array bars"></div></div>
+    <p class="hint">Trace panel shows every compare/swap step — the same discipline as dry-running a puzzle on paper.</p>
+    <ol id="sort-trace" class="trace"></ol>
+  </section>
+
+  <!-- ============ PATHFINDING PANEL ============ -->
+  <section id="panel-pathfinding" class="panel">
+    <div class="controls">
+      <div class="btnrow">
+        <button id="pf-run" class="btn primary">▶ Run Dijkstra</button>
+        <button id="pf-maze" class="btn ghost">Random walls</button>
+        <button id="pf-clear" class="btn ghost">Clear</button>
+      </div>
+      <label>Speed <input id="pf-speed" type="range" min="1" max="100" value="70" /></label>
+      <span class="legend"><i class="sw start"></i>start <i class="sw end"></i>target <i class="sw wall"></i>wall <i class="sw visit"></i>visited <i class="sw path"></i>path</span>
+    </div>
+    <div class="stats"><span>visited: <b id="pf-visited">0</b></span><span>path length: <b id="pf-length">–</b></span><span>status: <b id="pf-status">idle</b></span></div>
+    <div class="canvas-wrap"><div id="grid" class="grid" aria-label="pathfinding grid"></div></div>
+    <p class="hint">Click / drag cells to toggle walls. Start is top-left, target is bottom-right.</p>
+  </section>
+</main>
+
+<footer>Built by <b>Mohd Abdul Nawaz</b> · vanilla HTML/CSS/JS · no build step — deploy the folder as-is.</footer>
+<script src="js/sorting.js"></script>
+<script src="js/pathfinding.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
